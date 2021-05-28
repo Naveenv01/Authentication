@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:auth/Login.dart';
+
+
+import 'Login.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -64,6 +68,7 @@ class _SignUpState extends State<SignUp> {
             ],
           );
         });
+     
   }
 
   @override
@@ -71,75 +76,184 @@ class _SignUpState extends State<SignUp> {
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
+        
+
         child: Column(
           children: <Widget>[
-            Container(
-              height: 400,
-              child: Image(
-                image: AssetImage("images/login.jpg"),
-                fit: BoxFit.contain,
-              ),
-            ),
-            Container(
-              child: Form(
-                key: _formKey,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Container(height: 200,
+              child: Align(
+                alignment: Alignment.centerLeft,
                 child: Column(
-                  children: <Widget>[
-                    Container(
-                      child: TextFormField(
-                          validator: (input) {
-                            if (input.isEmpty) return 'Enter Name';
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Name',
-                            prefixIcon: Icon(Icons.person),
-                          ),
-                          onSaved: (input) => _name = input),
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Create',
+                    style: TextStyle(color: Colors.black,fontSize: 40),
                     ),
-                    Container(
-                      child: TextFormField(
-                          validator: (input) {
-                            if (input.isEmpty) return 'Enter Email';
-                          },
-                          decoration: InputDecoration(
-                              labelText: 'Email',
-                              prefixIcon: Icon(Icons.email)),
-                          onSaved: (input) => _email = input),
-                    ),
-                    Container(
-                      child: TextFormField(
-                          validator: (input) {
-                            if (input.length < 6)
-                              return 'Provide Minimum 6 Character';
-                          },
-                          decoration: InputDecoration(
-                            labelText: 'Password',
-                            prefixIcon: Icon(Icons.lock),
-                          ),
-                          obscureText: true,
-                          onSaved: (input) => _password = input),
-                    ),
-                    SizedBox(height: 20),
-                    RaisedButton(
-                      padding: EdgeInsets.fromLTRB(70, 10, 70, 10),
-                      onPressed: signUp,
-                      child: Text('SignUp',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 20.0,
-                              fontWeight: FontWeight.bold)),
-                      color: Colors.orange,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20.0),
-                      ),
-                    )
+
+                    Text('Account',style: TextStyle(color: Colors.black,fontSize: 20),)
                   ],
+                  
+                ),
+              ),),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20.0),
+              child: Container(
+                
+                decoration:BoxDecoration(borderRadius:BorderRadius.circular(20),
+                color: Colors.white,
+                    boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],) ,
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: <Widget>[
+                      Padding(
+                        padding: const EdgeInsets.only(top: 40,left: 8,right: 8,bottom: 10),
+                        child: Container(
+                          
+                          
+                          decoration: BoxDecoration(
+                            
+                          color: Colors.white,
+                          borderRadius: new BorderRadius.circular(10.0),),
+                          child: TextFormField(
+                            
+                              validator: (input) {
+                                if (input.isEmpty) return 'Enter Name';
+                              },
+                              decoration: InputDecoration(
+                                labelText: 'NAME',
+                                
+
+                               fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 2
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                        color: Colors.black,
+                        width: 2.0,
+                    ),
+                  ),
+                              ),
+                              onSaved: (input) => _name = input),
+                        ),
+                      ),
+                        SizedBox(height: 20),
+
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0,left: 8,right: 8,bottom: 10),
+                        child: Container(
+                          decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: new BorderRadius.circular(10.0),),
+                          child: TextFormField(
+                            
+                              validator: (input) {
+                                if (input.isEmpty) return 'Enter Email';
+                              },
+                              decoration: InputDecoration(
+                                fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 2
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 2.0,
+                    ),
+                  ),
+                                  labelText: 'Email',
+                                  prefixIcon: Icon(Icons.email)),
+                              onSaved: (input) => _email = input),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0,left: 8,right: 8,bottom: 30),
+                        child: Container(
+                          decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: new BorderRadius.circular(10.0),),
+                          child: TextFormField(
+                              validator: (input) {
+                                if (input.length < 6)
+                                  return 'Provide Minimum 6 Character';
+                              },
+                              decoration: InputDecoration(
+                               fillColor: Colors.white,
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 2
+                    ),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                          color: Colors.black,
+                          width: 2.0,
+                    ),
+                  ),
+
+                                labelText: 'Password',
+                                prefixIcon: Icon(Icons.lock),
+                              ),
+                              obscureText: true,
+                              onSaved: (input) => _password = input),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      
+                    ],
+                  ),
                 ),
               ),
+              
             ),
+            RaisedButton(
+              
+              
+              onPressed: signUp,
+              child: Text('SignUp',
+                  style: TextStyle(
+                    
+                      color: Colors.white,
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold)),
+              color: Colors.orange,
+              padding: EdgeInsets.fromLTRB(30, 10, 30, 10),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20.0),
+              ),
+            ),
+           
           ],
         ),
       ),
     ));
   }
-}
+
+ 
+}// Navigator.push(context, MaterialPageRoute(builder: (context) => SignUp()));

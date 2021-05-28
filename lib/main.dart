@@ -1,6 +1,5 @@
 import 'package:auth/Login.dart';
 import 'package:auth/SignUp.dart';
-import 'package:auth/Start.dart';
 import 'package:flutter/material.dart';
 import 'HomePage.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -29,7 +28,7 @@ class MyApp extends StatelessWidget {
 
         "Login" : (BuildContext context)=>Login(),
         "SignUp":(BuildContext context)=>SignUp(),
-        "start":(BuildContext context)=>Start(),
+        
       },
       
     );

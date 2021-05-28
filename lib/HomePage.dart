@@ -1,4 +1,3 @@
-import 'package:auth/Start.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 // import 'package:authentification/Start.dart';
@@ -17,7 +16,7 @@ class _HomePageState extends State<HomePage> {
   checkAuthentification() async {
     _auth.authStateChanges().listen((user) {
       if (user == null) {
-        Navigator.of(context).pushReplacementNamed("start");
+        Navigator.of(context).pushReplacementNamed("Login");
       }
     });
   }
@@ -65,11 +64,14 @@ class _HomePageState extends State<HomePage> {
                     fit: BoxFit.contain,
                   ),
                 ),
-                Container(
-                  child: Text(
-                    "Hello ${user.displayName} you are Logged in as ${user.email}",
-                    style:
-                        TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                Padding(
+                  padding: const EdgeInsets.all(.0),
+                  child: Container(
+                    child: Text(
+                      "Hello ${user.displayName} you are Logged in as ${user.email}",
+                      style:
+                          TextStyle(fontSize: 20.0, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
                 RaisedButton(
